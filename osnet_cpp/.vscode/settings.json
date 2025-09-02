@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.py": "python",
+        "optional": "cpp",
+        "variant": "cpp",
+        "chrono": "cpp"
+    }
+}

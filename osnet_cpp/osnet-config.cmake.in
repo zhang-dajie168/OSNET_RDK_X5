@@ -1,0 +1,24 @@
+# osnet-config.cmake.in
+@PACKAGE_INIT@
+
+set(OSNET_VERSION @CPACK_PACKAGE_VERSION@)
+
+set_and_check(OSNET_INCLUDE_DIR "@PACKAGE_INCLUDE_INSTALL_DIR@")
+set_and_check(OSNET_LIBRARY_DIR "@PACKAGE_LIB_INSTALL_DIR@")
+
+find_library(OSNET_LIBRARY
+    NAMES osnet_lib
+    PATHS ${OSNET_LIBRARY_DIR}
+    NO_DEFAULT_PATH
+)
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(OSNet
+    REQUIRED_VARS OSNET_INCLUDE_DIR OSNET_LIBRARY
+    VERSION_VAR OSNET_VERSION
+)
+
+if(OSNET_FOUND)
+    set(OSNET_LIBRARIES ${OSNET_LIBRARY})
+    set(OSNET_INCLUDE_DIRS ${OSNET_INCLUDE_DIR})
+endif()
